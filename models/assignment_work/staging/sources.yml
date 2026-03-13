@@ -89,3 +89,64 @@ sources:
             description: Y coordinate in NY State Plane projection system (NAD 83)
           - name: landmark
             description: Nearby landmark or point of interest
+      - name: source_nyc_open_restaurant_apps
+        description: NYC Open Open Restaurant Applications Historical Data.
+        columns: 
+          - name: objectid
+            description: Unique record Id
+            tests:
+              - unique
+              - not_null
+          - name: restaurant_name
+            description: name of the restaurant
+          - name: legal_business_name
+            description: name of the legal business
+          - name: doing_business_as_dba
+            description: name of DBA
+          - name: borough
+            description: NYC borough
+          - name: building_number
+            description: street number
+          - name: street
+            description: stree name
+          - name: zip_code
+            description: zip code
+          - name: food_service_establishment_permit
+            description: FSE Permit number
+          - name: sidewalk_dimensions_length
+            description: sidewalk length
+          - name: sidewalk_dimensions_width
+            description: sidewalk width
+          - name: sidewalk_dimensions_area
+            description: sidewalk area
+          - name: time_of_submission
+            description: submission timestamp
+          - name: approved_for_sidewalk_seating
+            description: approval status
+          - name: latitude
+            description: latitude
+          - name: longitude
+            description: longitude
+          - name: approved_for_roadway_seating
+          - name: bbl
+          - name: bin
+          - name: building_number
+          - name: building_address
+          - name: census_tract
+          - name: community_board
+          - name: council_district
+          - name: food_service_establishment
+          - name: globalid
+          - name: healthcompliance_terms
+          - name: landmark_district_or_building
+          - name: landmarkdistrict_terms
+          - name: nta
+          - name: qualify_alcohol
+          - name: roadway_dimensions_area
+          - name: roadway_dimensions_length
+          - name: roadway_dimensions_width
+          - name: seating_interest_sidewalk
+          - name: sla_license_type
+          - name: sla_serial_number
+          - name: zip
+
