@@ -4,7 +4,7 @@ FROM (
     SELECT
          objectid
         ,globalid
-        ,CAST(time_of_submission AS DATETIME) AS time_of_submission
+        ,time_of_submission
         ,restaurant_name
         ,legal_business_name
         ,doing_business_as_dba
@@ -48,7 +48,7 @@ FROM (
         ,sidewalk_dimensions_width
         ,sidewalk_dimensions_area
         ,CURRENT_TIMESTAMP() AS _stg_loaded_at
-        ,ROW_NUMBER() OVER (PARTITION BY objectid, globalid ORDER BY CAST(time_of_submission AS DATETIME) DESC) AS RN
+        ,ROW_NUMBER() OVER (PARTITION BY objectid, globalid ORDER BY time_of_submission DESC) AS RN
     FROM {{ source('raw', 'source_nyc_open_restaurant_apps') }}
     WHERE objectid IS NOT NULL
         AND globalid IS NOT NULL
