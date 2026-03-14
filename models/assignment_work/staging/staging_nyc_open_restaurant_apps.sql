@@ -20,7 +20,7 @@ FROM (
         ,sla_serial_number
         ,landmark_district_or_building
         ,landmarkdistrict_terms
-        ,TRIM(borough) AS [borough]
+        ,TRIM(borough) AS borough
         ,building_number
         ,street
         ,CASE
@@ -31,7 +31,7 @@ FROM (
            WHEN LENGTH(CAST(zip AS STRING)) = 10 AND REGEXP_CONTAINS(CAST(zip AS STRING), r'^\d{5}-\d{4}')
                 THEN CAST(zip AS STRING)
            ELSE NULL
-         END AS [zip_code]
+         END AS zip_code
         ,latitude
         ,longitude
         ,bbl
@@ -48,10 +48,10 @@ FROM (
         ,sidewalk_dimensions_width
         ,sidewalk_dimensions_area
         ,CURRENT_TIMESTAMP() AS _stg_loaded_at
-        ,ROW_NUMBER() OVER (PARTITION BY objectid, globalid ORDER BY CAST(time_of_submission AS DATETIME) DESC) AS [RN]
+        ,ROW_NUMBER() OVER (PARTITION BY objectid, globalid ORDER BY CAST(time_of_submission AS DATETIME) DESC) AS RN
     FROM {{ source('raw', 'source_nyc_open_restaurant_apps') }}
     WHERE objectid IS NOT NULL
         AND globalid IS NOT NULL
         AND time_of_submission IS NOT NULL
     ) remove_dup
-WHERE [RN] = 1
+WHERE RN = 1
