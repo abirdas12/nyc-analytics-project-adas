@@ -2,10 +2,6 @@
 WITH seating_types AS (
    SELECT DISTINCT
         seating_interest_sidewalk AS seating_interest
-
---TODO: Replace this comment with a CASE WHEN .. statement that handles the different possibilities for approved_for_sidewalk_seating and approved_for_roadway_seating in the data
---NOTE: The final result we want to select here is two boolean columns (TRUE or FALSE values in them), one column approved_for_sidewalk (TRUE or FALSE value), and one column approved_for_roadway 
---AS approved_for_roadway
         ,CASE 
             WHEN approved_for_sidewalk_seating = 'yes' THEN TRUE
             ELSE FALSE
@@ -14,6 +10,10 @@ WITH seating_types AS (
             WHEN approved_for_roadway_seating = 'yes' THEN TRUE
             ELSE FALSE
         END AS approved_for_roadway
+
+--TODO: Replace this comment with a CASE WHEN .. statement that handles the different possibilities for approved_for_sidewalk_seating and approved_for_roadway_seating in the data
+--NOTE: The final result we want to select here is two boolean columns (TRUE or FALSE values in them), one column approved_for_sidewalk (TRUE or FALSE value), and one column approved_for_roadway 
+--AS approved_for_roadway
 
    FROM {{ ref('staging_nyc_open_restaurant_apps') }}
    WHERE seating_interest_sidewalk IS NOT NULL
@@ -26,13 +26,12 @@ seating_dimension AS (
            'approved_for_roadway'
        ]) }} AS seating_type_key
 
-       -- TODO: fill in the rest of this SELECT statement
-       --  based on the dimensional model!
-
        ,'seating_interest'
        ,'approved_for_sidewalk'
        ,'approved_for_roadway'
 
+       -- TODO: fill in the rest of this SELECT statement
+       --  based on the dimensional model!
    FROM seating_types
 )
 
