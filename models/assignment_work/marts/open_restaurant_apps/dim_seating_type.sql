@@ -1,12 +1,12 @@
 -- Seating type dimension for open restaurant seating applications
 WITH seating_types AS (
    SELECT DISTINCT
-        seating_interest_sidewalk AS seating_interest
-        ,CASE 
+        seating_interest_sidewalk AS seating_interest,
+        CASE 
             WHEN approved_for_sidewalk_seating = 'yes' THEN TRUE
             ELSE FALSE
-         END AS approved_for_sidewalk
-        ,CASE 
+        END AS approved_for_sidewalk,
+        CASE 
             WHEN approved_for_roadway_seating = 'yes' THEN TRUE
             ELSE FALSE
         END AS approved_for_roadway
@@ -24,11 +24,11 @@ seating_dimension AS (
            'seating_interest',
            'approved_for_sidewalk',
            'approved_for_roadway'
-       ]) }} AS seating_type_key
+       ]) }} AS seating_type_key,
 
-       ,'seating_interest'
-       ,'approved_for_sidewalk'
-       ,'approved_for_roadway'
+       'seating_interest',
+       'approved_for_sidewalk',
+       'approved_for_roadway'
 
        -- TODO: fill in the rest of this SELECT statement
        --  based on the dimensional model!
