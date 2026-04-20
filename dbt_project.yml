@@ -57,3 +57,22 @@ models:
         dot_311:
           +materialized: table
 
+# adding project work schema
+
+    project_work:
+      staging:
+        +materialized: table
+        +schema: cis_9440_group_project_staging # dataset name for the staging data for project
+
+      marts:
+        +materialized: table
+        +schema: cis_9440_group_project_warehouse_marts # dataset name for the warehouse marts data for project
+      
+        shared:
+          +materialized: table
+
+        motor_veh_collision:
+          +materialized: table
+
+        street_complaints_311:
+          +materialized: table
