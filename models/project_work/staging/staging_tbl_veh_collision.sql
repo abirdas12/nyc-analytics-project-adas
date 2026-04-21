@@ -23,7 +23,7 @@ SELECT
     END AS borough
     ,CASE 
         WHEN zip_code IS NULL THEN '00000'
-        WHEN zip_code = ' ' THEN '00000'
+        WHEN zip_code = '' THEN '00000'
         ELSE zip_code
     END AS zip_code
     ,on_street_name
@@ -50,4 +50,5 @@ SELECT
     ,vehicle_type_code_3
     ,vehicle_type_code_4
     ,vehicle_type_code_5
+    ,CURRENT_TIMESTAMP() AS load_datetime
 FROM veh_collision_data
