@@ -22,8 +22,8 @@ SELECT
         ELSE 'UNKNOWN'
     END AS borough
     ,CASE 
-        WHEN zip_code IS NULL THEN '00000'
-        WHEN zip_code = '' THEN '00000'
+        WHEN TRIM(zip_code) IS NULL THEN '00000'
+        WHEN TRIM(zip_code) = '' THEN '00000'
         ELSE zip_code
     END AS zip_code
     ,on_street_name
