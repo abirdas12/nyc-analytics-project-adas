@@ -3,7 +3,7 @@ WITH casualty AS (
     SELECT DISTINCT 
          CAST(number_of_persons_injured AS INT) AS number_of_persons_injured 
         ,CAST(number_of_persons_killed AS INT)  AS number_of_persons_killed
-    FROM {{ref("staging_tbl_veh_collision")}}
+    FROM {{ref('staging_tbl_veh_collision')}}
     WHERE number_of_persons_killed IS NOT NULL 
         OR number_of_persons_injured  IS NOT NULL
 
