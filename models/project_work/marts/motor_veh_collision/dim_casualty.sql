@@ -14,7 +14,7 @@ WITH casualty AS (
         {{ dbt_utils.generate_surrogate_key(['number_of_persons_injured', 'number_of_persons_killed']) }} AS casualty_key
         ,number_of_persons_injured 
         ,number_of_persons_killed
-    FROM dim_casualty
+    FROM casualty
 )
 
 SELECT *
