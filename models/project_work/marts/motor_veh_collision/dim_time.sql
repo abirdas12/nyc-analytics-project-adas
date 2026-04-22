@@ -6,7 +6,7 @@ WITH time AS (
 
 )
 
-,dim_casualty AS (
+,dim_time AS (
     SELECT 
         {{ dbt_utils.generate_surrogate_key([
             'EXTRACT(HOUR FROM crash_time)'
@@ -14,8 +14,8 @@ WITH time AS (
         ]) }} AS time_key
         ,CAST(COALESCE(EXTRACT(HOUR FROM crash_time),0) AS INT)   AS hour
         ,CAST(COALESCE(EXTRACT(MINUTE FROM crash_time),0) AS INT) AS minute
-    FROM casualty
+    FROM time
 )
 
 SELECT *
-FROM dim_casualty
+FROM dim_time
