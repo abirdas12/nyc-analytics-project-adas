@@ -21,10 +21,10 @@ WITH con_factor AS (
             ,'contributing_factor_vehicle_4'
         ]) }} AS factor_key
 
-        ,contributing_factor_vehicle_1
-        ,contributing_factor_vehicle_2
-        ,contributing_factor_vehicle_3
-        ,contributing_factor_vehicle_4
+        ,contributing_factor_vehicle_1   AS factor_vehicle_1 
+        ,contributing_factor_vehicle_2   AS factor_vehicle_2 
+        ,contributing_factor_vehicle_3   AS factor_vehicle_3
+        ,contributing_factor_vehicle_4   AS factor_vehicle_4
     FROM con_factor
 )
 
