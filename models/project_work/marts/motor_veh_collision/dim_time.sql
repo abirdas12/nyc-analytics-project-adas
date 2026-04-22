@@ -1,6 +1,6 @@
 WITH time AS (
     SELECT DISTINCT 
-        crash_time 
+        CAST(crash_time AS TIME) AS crash_time
     FROM {{ref('staging_tbl_veh_collision')}}
     WHERE crash_time IS NOT NULL 
 
